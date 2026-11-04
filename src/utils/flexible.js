@@ -60,9 +60,8 @@
         if (docEl.firstElementChild) {
             docEl.firstElementChild.appendChild(metaEl);
         } else {
-            var wrap = doc.createElement('div');
-            wrap.appendChild(metaEl);
-            doc.write(wrap.innerHTML);
+            // Fallback without document.write: append to head or html element
+            (doc.head || docEl).appendChild(metaEl);
         }
     }
 
